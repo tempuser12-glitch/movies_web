@@ -17,17 +17,17 @@ export default function ViewMovie() {
     const [videos, setVideos] = useState<any>([]);
     let trailervideo_id: any = [];
     // const movie_id = useSelector((state: RootState) => state.counter.movieId);
-    const movie_id = 250;
+    const movie_id = 155;
 
     const fetchMovieData = async () => {
 
-        await ApiServices.get(`/movie/${movie_id}`).then((data) => setMovieDetails(data)).catch((err) => { throw new Error('Unable to fetch Individuals details') });
+        await ApiServices.get(`/movie/${movie_id}`).then((data) => setMovieDetails(data)).catch(() => { throw new Error('Unable to fetch Individuals details') });
 
-        await ApiServices.get(`/movie/${movie_id}/images`).then((data) => setMovieImages(data.backdrops)).catch((err) => { throw new Error('unable to fetch movie Images') });
+        await ApiServices.get(`/movie/${movie_id}/images`).then((data) => setMovieImages(data.backdrops)).catch(() => { throw new Error('unable to fetch movie Images') });
 
-        await ApiServices.get(`/movie/${movie_id}/credits?language=en-US`).then((data) => setCastImages(data.cast)).catch((err) => { throw new Error('Unable to cast Images') });
+        await ApiServices.get(`/movie/${movie_id}/credits?language=en-US`).then((data) => setCastImages(data.cast)).catch(() => { throw new Error('Unable to cast Images') });
 
-        await ApiServices.get(`/movie/${movie_id}/videos`).then((data) => setVideos(data.results)).catch((err) => { throw new Error('Unable to fetch videos') });
+        await ApiServices.get(`/movie/${movie_id}/videos`).then((data) => setVideos(data.results)).catch(() => { throw new Error('Unable to fetch videos') });
 
     }
 
@@ -52,16 +52,19 @@ export default function ViewMovie() {
     }
     getTrailer(videos);
 
+    console.log("moviedet",videos)
+
     return (
         <>
-            <div className='container'>
-                {/* <span>{movie_idd}</span> */}
+        <div className='containerwrapper'>
+            <div className='maincontainer'>
                 {
                     Object.keys(movieDetails).length > 0 ? <>
                         <h4 className='group headingh4'>{movieDetails?.original_title}</h4>
+
                         <div className='md:h-[360px] lg:h-[420px] flex flex-col md:flex-row items-center gap-3 mb-4'>
-                            <div className='w-full md:w-[220px] lg:w-[320px] h-[320px] md:h-full rounded-xl relative overflow-hidden'>
-                                <img src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`} alt='movie' />
+                            <div className='md:w-[220px] lg:w-[320px] md:h-full w-full max-w-[320px] md:max-w-none aspect-[2/3] md:aspect-auto rounded-xl relative overflow-hidden shrink-0'>
+                                <img className='w-full h-full object-cover block' src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`} alt='movie' />
                             </div>
                             <div className='relative w-full md:grow h-[320px] md:h-full'>
                                 <iframe className='rounded-xl absolute w-full h-full inset-0' src={`https://www.youtube.com/embed/${trailervideo_id[0]?.key}?autoplay=1&mute=1`}>
@@ -93,8 +96,8 @@ export default function ViewMovie() {
                                 movieImages.map((item: any, index: number) => {
                                     if (index < 10) {
                                         return (
-                                            <div key={index} className='relative w-34 h-32'>
-                                                <img src={`https://image.tmdb.org/t/p/original${item.file_path}`} alt='image_path' />
+                                            <div key={index} className='relative w-34 h-32 rounded-xl overflow-hidden'>
+                                                <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original${item.file_path}`} alt='image_path' />
                                             </div>
                                         )
                                     }
@@ -103,12 +106,12 @@ export default function ViewMovie() {
                         </div>
 
                         {/* videos */}
-                        <div>
+                        {/* <div>
                             <div className='relative w-[calc(100%-220px)] '>
                                 <iframe className='rounded-xl absolute w-full h-full inset-0' src={`https://www.youtube.com/embed/V0Fqdb-smqo?autoplay=1&mute=1`}>
                                 </iframe>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* cast */}
                         {/* <h4 className='group headingh4 py-4'>Top Cast <HiChevronRight className='group-hover:ml-1 transition-all duration-200' /></h4>
@@ -155,6 +158,7 @@ export default function ViewMovie() {
                 }
 
             </div>
+        </div>
         </>
     )
 }

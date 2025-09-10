@@ -1,14 +1,15 @@
-import TopBar from "./topBar"
+import TopBar from "./topBar";
+import { Outlet } from "react-router";
 
 
 const Layout = () => {
     return (
-        <div className="">
+        <main>
             <TopBar />
-            <div>
-
-            </div>
-        </div>
+            <section>
+                <Outlet />
+            </section>
+        </main>
     )
 }
 

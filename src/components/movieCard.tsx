@@ -3,6 +3,7 @@ import React from 'react';
 // import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 // import Link from "next/link";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
+import Tooltip from './toolTip';
 // import Image from 'next/image';
 // import { useDispatch } from "react-redux";
 // import type { AppDispatch } from "@/store/store";
@@ -25,7 +26,7 @@ const MovieCard:React.FC<movieCardProps> = ({poster_path,original_title,vote_ave
         // router.refresh();
     }
     return (
-        <div className='w-full bg-white rounded-xl overflow-hidden'>
+        <div className='w-full bg-white rounded-xl overflow-hidden hover:bg-c1'>
         <div className='w-full h-[220px] relative'>
             <img src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={`${original_title}`} />
         </div>
@@ -35,12 +36,9 @@ const MovieCard:React.FC<movieCardProps> = ({poster_path,original_title,vote_ave
                     <HiStar color='green' />{vote_average.toFixed(1)}
                 </span>
                 <span className='cursor-pointer'>
-                    {/* <Tooltip>
-                        <TooltipContent> */}
-                            Add to Favorites
-                        {/* </TooltipContent>
-                        <TooltipTrigger> <HiOutlineStar /></TooltipTrigger>
-                    </Tooltip> */}
+                    <Tooltip content='Add to Favorites'>
+                            <HiOutlineStar />
+                    </Tooltip>
                 </span>
             </div>
             <div className='h-10'>

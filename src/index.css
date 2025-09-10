@@ -12,8 +12,11 @@
 }
 
 @layer components{
-  .container{
-    @apply max-w-[1200px] mx-auto px-4;
+  .containerwrapper{
+    @apply px-4 w-full;
+  }
+  .maincontainer{
+    @apply max-w-[1200px] mx-auto;
   }
   .subheading{
     @apply text-sm text-gray-500 font-medium;
@@ -21,13 +24,12 @@
   .headingh4{
     @apply text-xl font-semibold inline-flex items-center gap-1 hover:underline py-4 cursor-pointer;
   }
+  .homecardsetup{
+    @apply flex flex-wrap gap-4 justify-center md:justify-start;
+  }
+
 }
 
 body{
   font-family: "Josefin Sans", sans-serif;
-}
-
-.homecardsetup{
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(200,1fr));
 }

@@ -31,13 +31,13 @@ export default function EmblaCarousel({ slides }: EmblaCarouselProps) {
       {/* <div className="flex justify-between mt-4 px-2"> */}
         <button
           onClick={scrollPrev}
-          className="w-10 h-10 grid place-content-center cursor-pointer rounded bg-gray-200  hover:bg-gray-300 absolute top-[35%] left-0"
+          className="w-10 h-10 grid place-content-center cursor-pointer rounded-full bg-gray-200  hover:bg-gray-300 absolute top-[35%] left-0"
         >
           <HiChevronLeft />
         </button>
         <button
           onClick={scrollNext}
-          className="w-10 h-10 grid place-content-center cursor-pointer bg-gray-200 rounded hover:bg-gray-300 absolute top-[35%] right-0"
+          className="w-10 h-10 grid place-content-center cursor-pointer bg-gray-200 rounded-full hover:bg-gray-300 absolute top-[35%] right-0"
         >
           <HiChevronRight />
         </button>
