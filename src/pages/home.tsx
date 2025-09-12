@@ -1,11 +1,16 @@
 import { ApiServices } from "../services/apiServices";
 import { useEffect, useState } from "react";
 import { HiStar } from "react-icons/hi";
+import { UseSelector, useDispatch } from "react-redux";
+import { AppDispatch } from "../store/store";
+import { setMovieId } from "../store/slices/movieId_slice";
 
 export default function Home() {
   const [genreLists, setGenreLists] = useState<any>([]);
   const [genreMovies, setGenreMovies] = useState<any>([]);
   const [activeGenre, setActiveGenre] = useState('popular');
+
+  const dispatch = useDispatch<AppDispatch>();
 
 
   const fetchDatas = async () => {
@@ -27,6 +32,7 @@ export default function Home() {
   }
 
   const handleClick = (movie_id:string)=>{
+    dispatch(setMovieId(movie_id))
   }
 
   return (

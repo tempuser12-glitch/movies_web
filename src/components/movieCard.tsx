@@ -26,9 +26,9 @@ const MovieCard:React.FC<movieCardProps> = ({poster_path,original_title,vote_ave
         // router.refresh();
     }
     return (
-        <div className='w-full bg-white rounded-xl overflow-hidden hover:bg-c1'>
-        <div className='w-full h-[220px] relative'>
-            <img src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={`${original_title}`} />
+        <div className='w-full bg-white rounded-xl overflow-hidden group hover:bg-c1'>
+        <div className='aspect-[2/3] relative overflow-hidden'>
+            <img className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-110' src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={`${original_title}`} />
         </div>
         <div className='p-2 flex flex-col gap-2'>
             <div className='flex items-center justify-between'>

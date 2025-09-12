@@ -1,14 +1,8 @@
-'use client'
-import React from 'react'
-// import Image from 'next/image';
 import { ApiServices } from '../services/apiServices';
 import { useEffect, useState } from 'react';
-// import MovieCard from '../components/movieCard';
 import MoviesListsComp from '../components/movieListComp';
-// import { HiChevronRight } from 'react-icons/hi';
 import { Link } from 'react-router';
-// import { useSelector } from 'react-redux';
-// import { RootState } from '@/store/store';
+import { selectMovieId } from '../store/slices/movieId_slice';
 
 export default function ViewMovie() {
     const [movieDetails, setMovieDetails] = useState<any>([]);
@@ -16,8 +10,10 @@ export default function ViewMovie() {
     const [castImages, setCastImages] = useState<any>([]);
     const [videos, setVideos] = useState<any>([]);
     let trailervideo_id: any = [];
+
+    const movie_id = useAppSelector(selectMovieId)
     // const movie_id = useSelector((state: RootState) => state.counter.movieId);
-    const movie_id = 155;
+    // const movie_id = 155;
 
     const fetchMovieData = async () => {
 
@@ -161,4 +157,8 @@ export default function ViewMovie() {
         </div>
         </>
     )
+}
+
+function useAppSelector(selectMovieId: any) {
+    throw new Error('Function not implemented.');
 }
