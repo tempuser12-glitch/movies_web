@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { HiOutlineSearch, HiMenu,HiOutlineX } from "react-icons/hi";
 import { MdOutlineAddToPhotos } from "react-icons/md";
 import { ApiServices } from "../services/apiServices";
-// import { useNavigate } from "react-router";
+import { useNavigate,useLocation } from "react-router";
 // import { useRouter } from "next/navigation";
 // import { useDispatch } from "react-redux";
 // import type { AppDispatch } from "@/store/store";
@@ -15,14 +15,14 @@ const TopBar = () => {
     const [debouncedValue, setDebouncedValue] = useState('');
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const [mobileMenu,setMobileMenu] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // const dispatch = useDispatch<AppDispatch>();
 
     const handleClick = (movie_id: string, title: string) => {
         // dispatch(getMovieId(movie_id));
         // router.push(`/viewmovie`);
-        // navigate('/viewmovie')
+        navigate(`/viewmovie/${movie_id}`)
         setSearch('');
         setSuggestions([]);
     }

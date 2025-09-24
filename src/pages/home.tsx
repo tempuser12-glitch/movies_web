@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div className="containerwrapper">
-      <div className="maincontainer">
+      {/* <div className="maincontainer">
         <div className="py-4">
           <ul className="flex items-center flex-wrap gap-2">
             {
@@ -54,7 +54,6 @@ export default function Home() {
         {
           genreMovies.length > 0 ? <div className="homecardsetup gap-4 pb-4">
             {
-              // onClick={()=>handleClick(item.id)}
               genreMovies.map((item: any, index: number) => (
                 <div key={index} className="max-w-[280px] flex-[1_1_220px] w-full cursor-pointer" onClick={()=>handleClick(item.id)}>
                   <div className="relative rounded-xl overflow-hidden aspect-[2/3]">
@@ -70,7 +69,7 @@ export default function Home() {
           </div> :
             <p className="text-center">Loading...</p>
         }
-      </div>
+      </div> */}
     </div>
   );
 }
