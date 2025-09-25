@@ -4,13 +4,16 @@ import { HiStar } from "react-icons/hi";
 import { UseSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { setMovieId } from "../store/slices/movieId_slice";
+import { useNavigate } from "react-router";
 
 export default function Home() {
   const [genreLists, setGenreLists] = useState<any>([]);
   const [genreMovies, setGenreMovies] = useState<any>([]);
   const [activeGenre, setActiveGenre] = useState('popular');
 
-  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  // const dispatch = useDispatch<AppDispatch>();
 
 
   const fetchDatas = async () => {
@@ -32,12 +35,14 @@ export default function Home() {
   }
 
   const handleClick = (movie_id:string)=>{
-    dispatch(setMovieId(movie_id))
+    // dispatch(setMovieId(movie_id))
+    navigate(`/viewmovie/${movie_id}`);
+    
   }
 
   return (
     <div className="containerwrapper">
-      {/* <div className="maincontainer">
+      <div className="maincontainer">
         <div className="py-4">
           <ul className="flex items-center flex-wrap gap-2">
             {
@@ -69,7 +74,7 @@ export default function Home() {
           </div> :
             <p className="text-center">Loading...</p>
         }
-      </div> */}
+      </div>
     </div>
   );
 }
