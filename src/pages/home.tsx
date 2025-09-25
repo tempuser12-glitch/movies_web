@@ -4,13 +4,16 @@ import { HiStar } from "react-icons/hi";
 import { UseSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { setMovieId } from "../store/slices/movieId_slice";
+import { useNavigate } from "react-router";
 
 export default function Home() {
   const [genreLists, setGenreLists] = useState<any>([]);
   const [genreMovies, setGenreMovies] = useState<any>([]);
   const [activeGenre, setActiveGenre] = useState('popular');
 
-  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  // const dispatch = useDispatch<AppDispatch>();
 
 
   const fetchDatas = async () => {
@@ -32,7 +35,9 @@ export default function Home() {
   }
 
   const handleClick = (movie_id:string)=>{
-    dispatch(setMovieId(movie_id))
+    // dispatch(setMovieId(movie_id))
+    navigate(`/viewmovie/${movie_id}`);
+    
   }
 
   return (
@@ -54,7 +59,6 @@ export default function Home() {
         {
           genreMovies.length > 0 ? <div className="homecardsetup gap-4 pb-4">
             {
-              // onClick={()=>handleClick(item.id)}
               genreMovies.map((item: any, index: number) => (
                 <div key={index} className="max-w-[280px] flex-[1_1_220px] w-full cursor-pointer" onClick={()=>handleClick(item.id)}>
                   <div className="relative rounded-xl overflow-hidden aspect-[2/3]">

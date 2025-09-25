@@ -28,7 +28,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, position = "top", children }
     right: "left-full ml-2 top-1/2 -translate-y-1/2",
   };
 
-  console.log("tooltip", coord)
+  // console.log("tooltip", coord)
 
   return (
     <div ref={tootipRef} className="relative inline-block" onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}>

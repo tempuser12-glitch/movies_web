@@ -2,11 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { HiOutlineSearch, HiMenu,HiOutlineX } from "react-icons/hi";
 import { MdOutlineAddToPhotos } from "react-icons/md";
 import { ApiServices } from "../services/apiServices";
-// import { useNavigate } from "react-router";
-// import { useRouter } from "next/navigation";
-// import { useDispatch } from "react-redux";
-// import type { AppDispatch } from "@/store/store";
-// import { getMovieId } from "@/store/slices/conterSlice";
+import { useNavigate,useLocation } from "react-router";
 import movie_icon from '../assets/movie_icon.png';
 
 const TopBar = () => {
@@ -15,14 +11,11 @@ const TopBar = () => {
     const [debouncedValue, setDebouncedValue] = useState('');
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const [mobileMenu,setMobileMenu] = useState(false);
-    // const navigate = useNavigate();
-
-    // const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     const handleClick = (movie_id: string, title: string) => {
-        // dispatch(getMovieId(movie_id));
-        // router.push(`/viewmovie`);
-        // navigate('/viewmovie')
+
+        navigate(`/viewmovie/${movie_id}`)
         setSearch('');
         setSuggestions([]);
     }

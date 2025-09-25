@@ -16,7 +16,7 @@ function App() {
           Component:Home,
         },
         {
-          path:'viewmovie',
+          path:'viewmovie/:movie_id',
           Component:ViewMovie
         }
       ]
