@@ -1,9 +1,6 @@
 import { ApiServices } from "../services/apiServices";
 import { useEffect, useState } from "react";
 import { HiStar } from "react-icons/hi";
-import { UseSelector, useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
-import { setMovieId } from "../store/slices/movieId_slice";
 import { useNavigate } from "react-router";
 
 export default function Home() {
@@ -12,9 +9,6 @@ export default function Home() {
   const [activeGenre, setActiveGenre] = useState('popular');
 
   const navigate = useNavigate();
-
-  // const dispatch = useDispatch<AppDispatch>();
-
 
   const fetchDatas = async () => {
     await ApiServices.get('/genre/movie/list').then((data) => setGenreLists(data.genres)).catch(() => { throw new Error('Unable to fetch genres') });
@@ -35,7 +29,6 @@ export default function Home() {
   }
 
   const handleClick = (movie_id:string)=>{
-    // dispatch(setMovieId(movie_id))
     navigate(`/viewmovie/${movie_id}`);
     
   }

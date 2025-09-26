@@ -1,4 +1,3 @@
-'use client';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import React, { useCallback, useState } from 'react';
@@ -11,7 +10,7 @@ interface EmblaCarouselProps {
 }
 
 export default function EmblaCarousel({ slides }: EmblaCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, slidesToScroll:1 });
   const [isEnab,setEmb] = useState({
     isPrev : emblaApi?.canScrollPrev(),
     isNext:emblaApi?.canScrollNext()
@@ -19,7 +18,6 @@ export default function EmblaCarousel({ slides }: EmblaCarouselProps) {
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  console.log("emb",emblaApi)
   return (
     <div className="relative w-full overflow-hidden py-4">
       <div className="overflow-hidden" ref={emblaRef}>

@@ -4,6 +4,7 @@ import { MdOutlineAddToPhotos } from "react-icons/md";
 import { ApiServices } from "../services/apiServices";
 import { useNavigate,useLocation } from "react-router";
 import movie_icon from '../assets/movie_icon.png';
+import { Link } from "react-router";
 
 const TopBar = () => {
     const [search, setSearch] = useState('');
@@ -70,7 +71,7 @@ const TopBar = () => {
                 {/* lefts */}
                 <div className="inline-flex items-center gap-4">
                     <span className=''>
-                        LOGO
+                        <Link to={'/'}>LOGO</Link>
                     </span>
                     <span className="inline-flex items-center gap-1 cursor-pointer"><HiMenu />Menu</span>
                 </div>

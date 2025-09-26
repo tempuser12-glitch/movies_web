@@ -14,12 +14,6 @@ export default function ViewMovie() {
 
     const { movie_id } = useParams();
 
-
-    // const [searchParams] = useSearchParams();
-    // const movie_id = searchParams.get('movie_id')
-    // const movie_id = useAppSelector(selectMovieId)
-    // const movie_id = useSelector((state: RootState) => state.counter.movieId);
-
     const fetchMovieData = async () => {
 
         await ApiServices.get(`/movie/${movie_id}`).then((data) => setMovieDetails(data)).catch(() => { throw new Error('Unable to fetch Individuals details') });
@@ -52,8 +46,6 @@ export default function ViewMovie() {
         }
     }
     getTrailer(videos);
-
-    console.log("moviedet", videos)
 
     return (
         <>

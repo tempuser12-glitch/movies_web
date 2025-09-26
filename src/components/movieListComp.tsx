@@ -28,8 +28,6 @@ function moviesListsComp({url,heading}:movieListProps) {
         <MovieCard key={index} poster_path={item.poster_path} original_title={item.original_title} vote_average={item.vote_average} movie_id={item.id} />
     )) : []
 
-
-    // console.log("dataaaa", data)
     return <div className="width-full">
         <h4 className='group headingh4'>{heading} <HiChevronRight className='group-hover:ml-1 transition-all duration-200' /></h4>
         <div className=''>
